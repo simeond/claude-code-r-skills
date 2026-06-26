@@ -33,6 +33,7 @@ To try and pre-empt some of the issues with LLMs being reinforced to please the 
 -   [Requirements](#requirements)
 -   [Environment Management](#environment-management)
 -   [Token Optimization](#token-optimization)
+-   [Cursor IDE Skills](#cursor-ide-skills)
 -   [License](#license)
 
 ## Acknowledgments
@@ -410,10 +411,19 @@ claude-code-r-skills/
 │   ├── tdd.md
 │   ├── code-review.md
 │   └── verify.md                    # Full quality gate before committing
-└── agents/
-    ├── planner.md                   # Uses Opus model
-    ├── tdd-guide.md                 # TDD enforcement specialist
-    └── code-reviewer.md
+├── agents/
+│   ├── planner.md                   # Uses Opus model
+│   ├── tdd-guide.md                 # TDD enforcement specialist
+│   └── code-reviewer.md
+└── cursor-skills/                   # Cursor IDE skills (different format)
+    ├── README.md
+    ├── referee-report/              # Academic referee reports
+    │   ├── SKILL.md
+    │   ├── references/
+    │   └── templates/
+    └── viva-qa/                     # Viva Q&A generator
+        ├── SKILL.md
+        └── templates/
 ```
 
 Note: `r-machine-learning` skill is local-only and not included in the public repository. Updated 2026-02-20 based on the WARND competition final model (4-model ridge stacked ensemble: XGBoost, Elastic Net, CatBoost, ExtraTrees; OOF AUC 0.8187). Key additions: Elastic Net and ExtraTrees patterns, stratified participant-level CV, expanded temporal feature engineering, ridge meta-learner stacking, and model selection guidance including documented TabNet failure.
@@ -506,6 +516,17 @@ The `suggest-compact` hook (included in this plugin) suggests `/compact` at logi
 
 **When NOT to compact:**
 - Mid-implementation (you'll lose variable names, file paths, partial state)
+
+## Cursor IDE Skills
+
+This repo also includes skills for **Cursor IDE** (not Claude Code terminal). These use a different format (`SKILL.md` with YAML frontmatter) and live in the `cursor-skills/` folder.
+
+| Skill | Description |
+|-------|-------------|
+| **referee-report** | Journal-calibrated referee reports for academic papers. Auto-detects structural vs reduced-form methodology. |
+| **viva-qa** | PhD viva preparation Q&A from referee reports. Synthesises concerns into exam-style questions. |
+
+See [cursor-skills/README.md](cursor-skills/README.md) for installation and usage.
 
 ## License
 
